@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.approved {
+  height: 150px;
+  width: 150px;
+}
+
+.title {
+  color: hsl(0, 0%, 90%)
+}
+
+.verificationFailed {
+  display: flex;
+  justify-content: center;
+}
+
+
+.verificationCard {
+  padding: 1em;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  font-size: 1em;
+  max-width: 350px;
+  text-align: center;
+  
+  align-items: center;
+  flex-direction: column;
+}

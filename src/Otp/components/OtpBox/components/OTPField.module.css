@@ -1,0 +1,22 @@
+.otpField.active {
+    border: 1px solid hsl(193, 98%, 53%);
+    box-shadow: 0 0 2px hsl(193, 98%, 53%)
+}
+
+.otpField {
+    background-color: hsl(0, 0%, 15%);
+    color: hsl(0, 0%, 85%);
+    border-radius: 12%;
+    outline: none;
+    font-size: 2em;
+    text-align: center;
+    width: 2em;
+    border: 1px solid hsl(0, 0%, 25%);
+    box-shadow: 0 0 2px white;
+    height: 1.5em;
+}
+
+
+@media (min-width:320px)  {
+
+}

@@ -1,0 +1,101 @@
+
+/*
+
+ <input type="text" 
+        value={field4}
+        inputMode="decimal"
+        onChange={()=>{}}
+        onPaste={onPasteHandler}
+        maxLength={1} 
+        ref={field4Ref}
+        onKeyUp={(e) => onChangeHandler(e, field4, setField4, field3Ref, null)}
+        className={fieldClassname(field4)} 
+        />
+
+ <input type="text" 
+        maxLength={1} 
+        value={field3}
+        onChange={()=>{}}
+       inputMode="decimal"
+        ref={field3Ref}
+        
+        onPaste={onPasteHandler}
+        onKeyUp={(e) => onChangeHandler(e, field3, setField3, field2Ref, field4Ref)}
+        className={fieldClassname(field3)} 
+
+        />
+   {  
+        <input type="text" 
+        
+        autoFocus
+        value={field1}
+        ref={field1Ref}
+        onPaste={onPasteHandler}
+        maxLength={1}
+        inputMode="decimal"
+        onChange={()=>{}}
+        onKeyUp={(e) => onChangeHandler(e, field1, setField1, null, field2Ref)}
+        className={fieldClassname(field1)} 
+        />
+        }
+
+         <input type="text" 
+        ref={field2Ref}
+        value={field2}
+        onPaste={onPasteHandler}
+        maxLength={1} 
+        onChange={()=>{}}
+        inputMode="decimal"
+        onKeyUp={(e) => onChangeHandler(e, field2, setField2, field1Ref, field3Ref)}
+        className={fieldClassname(field2)} 
+        />
+
+
+ const onField1KeyUp = (e: React.KeyboardEvent<HTMLInputElement>): any => {
+        console.log(e)
+        if (isDigit(e.keyCode)) {
+            setField1(e.key)
+            field2Ref.current?.focus()
+            return;
+        }
+        else if (e.key === 'Backspace') {
+            setField1('')
+            return;
+        }
+        //setField1(e.key);
+        //field2Ref.current?.focus()
+    } 
+
+    const onField2KeyUp = (e: React.KeyboardEvent<HTMLInputElement>): any => {
+        console.log(e)
+        if (e.key === 'Backspace') {
+            setField2('')
+            field1Ref.current?.focus()
+            return;
+        }
+        setField2(e.key);
+        field3Ref.current?.focus()
+    }
+
+    const onField3KeyUp = (e: React.KeyboardEvent<HTMLInputElement>): any => {
+        console.log(e)
+        if (e.key === 'Backspace') {
+            setField3('')
+            field2Ref.current?.focus()
+            return;
+        }
+        setField3(e.key);
+        field4Ref.current?.focus()
+    } 
+
+    const onField4KeyUp = (e: React.KeyboardEvent<HTMLInputElement>): any => {
+        console.log(e)
+        if (e.key === 'Backspace') {
+            setField4('')
+            field3Ref.current?.focus()
+            return;
+        }
+        setField4(e.key);
+        //fieldRef.current?.focus()
+    } 
+*/

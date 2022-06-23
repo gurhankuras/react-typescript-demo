@@ -1,0 +1,13 @@
+.otpContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5em;
+}
+
+.otpTitle {
+    padding: 0;
+    margin: 1em 0 0 0;
+    color: hsl(0, 0%, 90%)
+}
