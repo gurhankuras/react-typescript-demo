@@ -1,8 +1,7 @@
-import classes from './OTPField.module.css';
-import classNames from 'classnames/bind';
+import './OTPField.scss';
+import classNames from 'classnames';
 import React from 'react';
 
-const cx = classNames.bind(classes);
 
 type OTPFieldProps = {
     value: string;
@@ -22,9 +21,9 @@ export const OTPField = React.forwardRef<HTMLInputElement, OTPFieldProps>((props
                 maxLength={1} 
                 ref={ref}
                 onKeyUp={onKeyUp}
-                className={cx({
-                    otpField: true,
-                    active: value.length === 1
+                className={classNames({
+                    'otp-field': true,
+                    'active': value.length === 1
                 })} 
         />
     )

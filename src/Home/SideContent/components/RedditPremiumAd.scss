@@ -1,0 +1,39 @@
+@use '../../../shared.scss' as *;
+
+.premium-ad {
+    @include section-style;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    gap: 0.8rem;
+
+    .premium-ad__icon {
+        font-size: 2em;
+        color: $reddit-color;
+        top: -0.1em;
+        position: relative;
+    }
+
+    .premium-ad-body {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .premium-ad-info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+
+        .premium-ad__title {
+            font-size: 1em;
+            font-weight: bold;
+        }
+        .premium-ad__description {
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+    }
+
+    
+}

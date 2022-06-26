@@ -1,0 +1,17 @@
+
+ $btn-color: hsl(0, 0%, 75%);
+
+.button {
+    padding: 0.5em 1.5em;
+    text-align: center;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    border-radius: 1.5em;
+    background: $btn-color;
+
+    &:hover {
+        filter:brightness(90%);
+    }
+}

@@ -1,0 +1,17 @@
+$navbar-color: hsla(0, 0%, 14%, 1);
+$navbar-height: 3em;
+$icon-button-highlight-color: hsla(0, 0%, 40%, 0.4);
+$highlight-border: 1px solid hsl(0, 0%, 30%);
+$reddit-color: #ff4500;
+$section-border-radius: 0.3em;
+
+@mixin section-style {
+    border: 1px solid hsl(0, 0%, 30%);
+    background-color: $navbar-color;
+    border-radius:$section-border-radius;
+}
+
+@mixin section-image-border-style {
+    border-top-left-radius: $section-border-radius;
+    border-top-right-radius: $section-border-radius;
+}

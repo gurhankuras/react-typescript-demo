@@ -1,0 +1,33 @@
+.info {
+    display: none;
+    user-select: none;
+    margin-left: 0.2em;
+    .info__username {
+        font-size: 0.7rem;
+        font-weight: bold;
+    }
+
+    .info__karma {
+        display: flex;
+        gap: 3px;
+        flex-direction: row;
+        align-items: center;
+        font-size: 0.7em;
+        font-weight: bold;
+    }
+
+    .info__karma-icon {
+        color: rgb(215, 10, 10);
+    }
+
+    .info__karma-text {
+
+    }
+
+    @media screen and (min-width: 992px) {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+    }
+}

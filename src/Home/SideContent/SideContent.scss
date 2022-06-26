@@ -1,0 +1,13 @@
+.side-content {
+    display: none;
+    grid-area: sideContent;
+
+    @media only screen and (min-width: 60em){
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+
+

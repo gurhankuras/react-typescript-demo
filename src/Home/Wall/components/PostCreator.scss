@@ -1,0 +1,11 @@
+@use '../../../shared.scss' as *;
+
+.post-creation {
+    @include section-style;
+    display: flex;
+    align-items: center;
+    font-size: 0.8em;
+    flex-direction: row;
+    gap: 0.7em;
+    padding: 1em;
+}

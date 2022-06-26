@@ -1,0 +1,49 @@
+@use '../../../shared.scss' as *;
+
+$footer-text-color: hsl(0, 0%, 85%);
+.footer {
+    @include section-style;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: $navbar-height + 1.5em;
+    padding: 1em;
+    font-size: 0.85em;
+    color: $footer-text-color;
+
+    .general-links {
+        display: flex;
+        flex-direction: row;
+        justify-content: stretch;
+        align-items: stretch;
+    
+        .col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .link {
+        text-decoration: none;
+        color: $footer-text-color;
+        padding: 0.3em 0;
+    }
+
+    .divider {
+        width: 100%;
+        height: 1px;
+        background-color: $footer-text-color;
+        margin: 0.5rem 0;
+    }
+
+    .languages {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .copyright {
+        padding-top: 0.3em;
+    }
+    
+}

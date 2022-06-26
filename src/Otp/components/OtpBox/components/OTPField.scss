@@ -1,9 +1,6 @@
-.otpField.active {
-    border: 1px solid hsl(193, 98%, 53%);
-    box-shadow: 0 0 2px hsl(193, 98%, 53%)
-}
+$otp-field-border-color: hsl(193, 98%, 53%);
 
-.otpField {
+.otp-field {
     background-color: hsl(0, 0%, 15%);
     color: hsl(0, 0%, 85%);
     border-radius: 12%;
@@ -14,9 +11,13 @@
     border: 1px solid hsl(0, 0%, 25%);
     box-shadow: 0 0 2px white;
     height: 1.5em;
-}
 
+    &.active {
+        border: 1px solid $otp-field-border-color;
+        box-shadow: 0 0 2px $otp-field-border-color
+    }
 
-@media (min-width:320px)  {
+    @media (min-width:320px)  {
 
+    }
 }

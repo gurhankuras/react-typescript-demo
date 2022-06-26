@@ -1,4 +1,4 @@
-.otpContainer {
+.otp {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -6,7 +6,7 @@
     gap: 1.5em;
 }
 
-.otpTitle {
+.otp__title {
     padding: 0;
     margin: 1em 0 0 0;
     color: hsl(0, 0%, 90%)

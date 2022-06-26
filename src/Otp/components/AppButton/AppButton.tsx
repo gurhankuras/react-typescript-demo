@@ -10,7 +10,9 @@ type AppButtonProps = {
     active?: boolean
 };
 
-export const AppButton: React.FC<AppButtonProps> = ({ onClick, active = true, title }) => {
+export const AppButton: React.FC<
+React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> &
+AppButtonProps> = ({ onClick, active = true, title }) => {
     
     const buttonClassName = cx({
         button: true,

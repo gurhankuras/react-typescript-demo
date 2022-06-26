@@ -1,6 +1,6 @@
 
 import React, { SetStateAction, useEffect, useRef, useState } from 'react';
-import classes from './OtpBox.module.css';
+import './OtpBox.scss';
 import { OTPField } from './components/OtpField';
 import { isDigit } from '../../../Shared/utils/isDigit';
 
@@ -81,7 +81,7 @@ export const OtpBox: React.FC<OtpBoxProps> = ({ onChange }) =>  {
     } 
 
     return (
-        <div className={classes.otp}>
+        <div className='otp-box'>
        
 
         <OTPField 

@@ -1,0 +1,49 @@
+@use '../../../shared.scss' as *;
+
+.card {
+    @include section-style;
+    display: flex;
+    flex-direction: column;
+    .image {
+        @include section-image-border-style;
+        padding: 1.2em;
+        background-image: url('https://www.redditstatic.com/desktop2x/img/id-cards/home-banner@2x.png');
+        background-repeat: no-repeat;
+        background-color: $reddit-color;
+        background-position: center;
+        background-size: cover;
+    }
+    
+
+    .title {
+        display: flex;
+        padding: 0 0.75em;
+        align-items: flex-end;
+        font-size: 1em;
+        gap: 0.8rem;
+        position: relative;
+        top: -0.8em;
+        img {
+            width: 40px;
+            height: 68px;
+        }
+
+        span {
+            position: relative;
+            top: -25%;
+            font-weight: bold;
+        }
+    }
+
+    .description {
+        font-size: 0.9em;
+        padding: 0em 0.75em;
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+        padding: .75em .5em;
+    }
+}

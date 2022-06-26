@@ -3,7 +3,7 @@ import { AppButton } from "./components/AppButton/AppButton";
 import { OtpBox } from "./components/OtpBox/OtpBox";
 import { useNavigate } from 'react-router-dom'
 
-import classes from './Otp.module.css';
+import './Otp.scss';
 
 export function Otp() {
     const CODE_LENGTH = 4
@@ -25,8 +25,8 @@ export function Otp() {
     }
 
     return (
-    <div className={classes.otpContainer}>
-        <p className={classes.otpTitle}>
+    <div className='otp'>
+        <p className='otp__title'>
             Enter the code we've sent to your email
         </p>
         <OtpBox onChange={onOTPChangeHandler}/>
@@ -34,6 +34,7 @@ export function Otp() {
             title="Submit"
             onClick={navigateToMain} 
             active={buttonIsActive}/>
+        <div style={{height: '1000px'}}/>
     </div>)
 
 
