@@ -1,0 +1,43 @@
+
+@use '../../../../../shared.scss' as *;
+
+$navbar-search-color: hsl(0, 0%, 25%);
+$white-border-color: hsl(0, 0%, 90%);
+$white-border: 1px solid $white-border-color;
+
+.navbar__search-bar {
+    background-color: $navbar-search-color;
+    width: 100%;
+    border: none;
+    outline: none;
+    padding-left: 0.5em;
+    color: hsl(0, 0%, 80%);
+}
+
+.navbar__search-bar-wrapper {
+    display: flex;
+    flex: 1;
+    border-radius: 0.5em;
+    align-items: center;
+    padding: 0.5em;
+    background-color: $navbar-search-color;
+    border: $highlight-border;
+
+    &:hover {
+        border: $white-border;
+        background-color: $navbar-color;   
+    }
+
+    &:hover .navbar__search-bar{
+        background-color: $navbar-color;   
+    }
+}
+
+.focused-wrapper {
+    background-color: $navbar-color; 
+    border: $white-border;  
+}
+
+.focused {
+    background-color: $navbar-color; 
+}

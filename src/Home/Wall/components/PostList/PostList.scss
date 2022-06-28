@@ -1,0 +1,7 @@
+$gap: 1em;
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: $gap;
+    padding-top: $gap;
+}

@@ -1,16 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 :root {
-    --clr-primary: hsl(193, 98%, 53%)
-    --clr-background: #121212
+    --clr-primary: hsl(193, 98%, 53%);
+    --clr-background: #121212;
+    --clr-scrollbar-foreground: #666;
+    --clr-scrollbar-background: #333;
 }
 
+html {
+    /* to fix safari scrolling issue, apply oveflow-x:hidden to both html and body tag*/
+    overflow-x: hidden;
+}
 body {
     font-family: 'Roboto';
     background-color: #121212;
     color: hsl(0, 0%, 80%);
     font-size: 0.7em;
+    overflow-x: hidden;
+    scrollbar-color: var(--clr-scrollbar-foreground) var(--clr-scrollbar-background);   
 }
+
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--clr-scrollbar-foreground);
+    border-radius: 10px;
+}
+
+
+::-webkit-scrollbar-track {
+    background: var(--clr-scrollbar-background);
+    box-shadow: inset 0 0 5px grey;
+}
+
 
 * {
     margin: 0;

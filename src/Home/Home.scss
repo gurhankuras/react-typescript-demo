@@ -2,17 +2,17 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1em 20em 1fr;
     grid-template-areas: ".. wall wall wall wall wall wall wall wall wall wall wall ..";
-    /*background-color: green;*/
+    // background-color: green;
     @media only screen and (min-width: 60em){
         grid-template-areas: ".. wall wall wall wall wall wall wall wall wall gap sideContent ..";
-        /*background-color: orange;*/
+        // background-color: orange;
 
     }
 
     @media only screen and (min-width: 70em){
         grid-template-columns: 1fr 40em 1em 310px 1fr;
         grid-template-areas: ".. wall gap sideContent ..";
-        /*background-color: orangered;*/
+        // background-color: orangered;
 
     }
 }

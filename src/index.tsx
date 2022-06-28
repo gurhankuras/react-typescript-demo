@@ -10,9 +10,9 @@ import {
 } from "react-router-dom";
 import { EmailConfirmation } from './EmailConfirmation/EmailConfirmation';
 import { Provider } from 'react-redux';
-import { store } from './EmailConfirmation/state/store';
 import { NavBar } from './Shared/components/NavBar/NavBar';
 import { AppRoutes } from './AppRoutes';
+import { store } from './Shared/components/NavBar/components/Search/combinedReducers';
 
 
 const root = ReactDOM.createRoot(
@@ -23,9 +23,12 @@ const root = ReactDOM.createRoot(
 root.render(
   //<React.StrictMode>
   <BrowserRouter>
-    <NavBar>
-      <AppRoutes />
-    </NavBar>
+        <Provider store={store}>
+          <NavBar>
+            <AppRoutes />
+          </NavBar>
+        </ Provider>
+
   </BrowserRouter>  
   //</React.StrictMode>
 );

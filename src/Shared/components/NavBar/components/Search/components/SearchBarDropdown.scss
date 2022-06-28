@@ -1,0 +1,23 @@
+
+@use '../../../../../../shared.scss' as *;
+
+.dropdown {
+    position: relative;
+    width: max(100%, 200px);
+
+}
+
+.dropdown__content {
+    display: none;
+}
+
+.dropdown__content[data-active='true'] {
+    @include section-style;
+    display: block;
+    border-radius: 0;
+    content: '';
+    position: absolute;
+    width: 100%;
+    max-height: 20em;
+    overflow: auto;
+}

@@ -1,15 +1,14 @@
 import { Logo } from './components/Logo';
 import './NavBar.scss';
 import { AiFillHome, AiOutlinePlus} from 'react-icons/ai'
-import { FaUserPlus } from 'react-icons/fa'
 import { BiChevronDown } from 'react-icons/bi'
 import { BsShield, BsChatDots, BsBell, BsMegaphone } from 'react-icons/bs'
-import { Link } from 'react-router-dom';
 import { RiMenu5Line } from 'react-icons/ri';
-
-import { NavSearchBar } from './components/NavSearchBar';
+import { NavSearchBar, WrappedNavSearchBar } from './components/Search/NavSearchBar';
 import { NavBarProfile, NavProfileUser } from './components/NavBarProfile';
 import { isMobile } from '../../utils/isMobile';
+import { useRef, useState } from 'react';
+
 type NavBarProps = {
     children?: React.ReactNode;
 }
@@ -40,26 +39,52 @@ export const NavBar: React.FC<NavBarProps> = ({ children }) => {
 }
 
 const StandardNavBarContent: React.FC<NavBarContentProps> = ({ user }) => {
+
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const parentRef = useRef<HTMLDivElement | null>(null);
+
+    const closeDropdownWhenClickedOutside = (e: MouseEvent) => {
+        e.stopImmediatePropagation();
+        console.log(e.target);
+        const target = e.target;
+        if (!target) {
+            return;
+        }
+
+        if (target instanceof HTMLElement && !parentRef.current?.contains(target)) {
+            console.log('Dropdown closes.')
+            setDropdownOpen(false);
+        }
+    }
+
     return (
-<>
-                <div className='home-dropdown-container'>
-                    <AiFillHome className='navbar__icon'/>
-                    <p className='navbar__home-text'>Home</p>
-                    <div className='navbar__spacer' />
-                    <BiChevronDown className='navbar__icon'/>
+    <>
+        <div className='home-dropdown-container'>
+            <AiFillHome className='navbar__icon'/>
+            <p className='navbar__home-text'>Home</p>
+            <div className='navbar__spacer' />
+            <BiChevronDown className='navbar__icon'/>
+        </div>
+        <NavSearchBar placeholder=''>
+            <div  className='dropdown'>
+                <div className='dropdown-content' data-active={dropdownOpen}>
+                    {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(i => {
+                        return <div key={i} className='dropdown-item'>{i}</div>
+                    })}
                 </div>
-                <NavSearchBar placeholder='' />      
-                
-                {true && <div className='navbar__spacer'></div>}
-                <div className='navbar__actions'>
-                    <BsShield className='navbar__icon navbar__action'/>
-                    <BsChatDots className='navbar__icon navbar__action' />
-                    <BsBell className='navbar__icon navbar__action'/>
-                    <AiOutlinePlus className='navbar__icon navbar__action'/>
-                    <BsMegaphone className='navbar__icon navbar__action--circle highlighted'/>
-                </div>
-                <NavBarProfile user={user}/>
-            </>
+            </div>
+        </ NavSearchBar>   
+        
+        <div className='navbar__spacer'></div>
+        <div className='navbar__actions'>
+            <BsShield className='navbar__icon navbar__action'/>
+            <BsChatDots className='navbar__icon navbar__action' />
+            <BsBell className='navbar__icon navbar__action'/>
+            <AiOutlinePlus className='navbar__icon navbar__action'/>
+            <BsMegaphone className='navbar__icon navbar__action--circle highlighted'/>
+        </div>
+        <NavBarProfile user={user}/>
+    </>
     )
 }
 
