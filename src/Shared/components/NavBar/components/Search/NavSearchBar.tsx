@@ -4,17 +4,16 @@ import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { TrendingToday } from './components/TrendingTodayList';
 import { useDispatch, useSelector } from 'react-redux';
-import { store as trendsStore, TrendingStore } from './state/TrendingStore';
 import { fetch } from './state/TrendingActionCreators';
 import { SearchBarDropdown } from './components/SearchBarDropdown';
 import { Provider } from 'react-redux'
-import { SearchStore, store as searchStore } from './search-state/SearchStore';
 import { search } from './search-state/SearchActionCreators';
 import { useDebounce } from '../../../../utils/useDebounce';
 import { SearchResultList } from './components/SearchResultList';
 import { mapToPresented } from './search-state/services/makeSearchService';
 import { AppStore, store } from './combinedReducers';
 
+// MARK: Types
 type NavBarSearchBarProps = {
     placeholder: string;
 }
@@ -22,33 +21,24 @@ type DetailedNavBarProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivE
 
 type NavSearchBarType = React.FC<DetailedNavBarProps>
 
-export const NavSearchBar: NavSearchBarType = ({ style, placeholder, onClick, children }) => {
+const DEBOUNCE_MILLISECONS = 500;
+
+export const NavSearchBar: NavSearchBarType = ({ style, placeholder, onClick }) => {
+    // MARK: Refs
     const searchFieldRef = useRef<HTMLInputElement | null>(null);
     const parentRef = useRef<HTMLDivElement | null>(null);
 
+    // MARK: Local state
     const [focused, setFocused] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState<string>('');
-    
+    const debouncedSearchTerm = useDebounce(searchTerm, DEBOUNCE_MILLISECONS);
+
+    // MARK: Redux
     const dispatch = useDispatch();
-
-    //const state = useSelector((state: AppStore) => state.trends);
-    const state = useSelector((state: AppStore) => state.trends);
+    const trendsState = useSelector((state: AppStore) => state.trends);
     const searchState = useSelector((state: AppStore) => state.search);
-    console.log(state);
-    const debouncedSearchTerm = useDebounce(searchTerm, 1000);
-
     console.log('render')
-
-    useEffect(() => {
-        const htmlElement = document.querySelector('html')
-        htmlElement?.addEventListener('click', closeDropdownWhenClickedOutside)
-        window.addEventListener('resize', closeDropdown)
-        return () => {
-            htmlElement?.removeEventListener('click', closeDropdownWhenClickedOutside);
-            window.removeEventListener('resize', closeDropdown);
-        }
-    }, []);
 
     useEffect(() => {
         if (debouncedSearchTerm.length !== 0) {
@@ -57,17 +47,8 @@ export const NavSearchBar: NavSearchBarType = ({ style, placeholder, onClick, ch
         }
     }, [debouncedSearchTerm]);
 
-    const closeDropdownWhenClickedOutside = (e: MouseEvent) => {
-        e.stopImmediatePropagation();
-        const target = e.target;
-        if (!target) { return; }
 
-        if (target instanceof HTMLElement && !parentRef.current?.contains(target)) {
-            console.log('Dropdown closes.')
-            closeDropdown()
-        }
-    }
-
+    //  MARK: Dropdown
     const closeDropdown = () => {
         setDropdownOpen(false);
     }
@@ -80,17 +61,25 @@ export const NavSearchBar: NavSearchBarType = ({ style, placeholder, onClick, ch
         setDropdownOpen(true);
     }
 
+    // MARK: Input focus
+    const onFocused = (e: React.FocusEvent<HTMLInputElement, Element>) => setFocused(true)
+    const onBlurred = (e: React.FocusEvent<HTMLInputElement, Element>) => setFocused(false)
+    
     const onClickHandler = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         searchFieldRef.current?.focus()
         onClick?.call(this, e);
         openDropdown()
     }
 
-    const onFocused = (e: React.FocusEvent<HTMLInputElement, Element>) => {
-        setFocused(true);
-    }
-    const onBlurred = (e: React.FocusEvent<HTMLInputElement, Element>) => {
-        setFocused(false);
+    
+    const renderDropdownContent = () => {
+        const isSearchTermEmpty = debouncedSearchTerm.length === 0;
+        if (isSearchTermEmpty) {
+            return <TrendingToday results={trendsState.trendingTopics} loading={trendsState.loading}/>
+        } else {
+            const presentableResults = searchState.results.map(r => mapToPresented(r));
+            return <SearchResultList results={presentableResults} />
+        }
     }
 
     return (
@@ -104,7 +93,7 @@ export const NavSearchBar: NavSearchBarType = ({ style, placeholder, onClick, ch
                         })
                     } 
                 onClick={(e) => onClickHandler(e)}>
-                <BsSearch />
+                <BsSearch className='search-icon'/>
                 <input  
                     type="text" 
                     name="search"
@@ -120,18 +109,16 @@ export const NavSearchBar: NavSearchBarType = ({ style, placeholder, onClick, ch
                         'focused': focused 
                     })}
                     ref={searchFieldRef} 
-                />  
+                />
             </div>
             <SearchBarDropdown 
-                open={dropdownOpen} 
+                open={dropdownOpen}
+                onClose={() => closeDropdown()}
                 ref={parentRef}
             >
-                {debouncedSearchTerm.length === 0 &&
-                 <TrendingToday results={state.trendingTopics} loading={state.loading}/>}
-                 {debouncedSearchTerm.length !== 0 && <SearchResultList results={searchState.results.map(r => mapToPresented(r))}/>}
+               {renderDropdownContent()}
             </SearchBarDropdown>
         </div>
-        
     )
 }
 

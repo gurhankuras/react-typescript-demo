@@ -7,8 +7,8 @@ $reddit-color: #ff4500;
 $section-border-radius: 0.3em;
 
 @mixin section-style {
-    border: 1px solid hsl(0, 0%, 30%);
-    background-color: $navbar-color;
+    border: 1px solid var(--section-border-color);
+    background-color: var(--section-background-color);
     border-radius:$section-border-radius;
 }
 
@@ -16,3 +16,79 @@ $section-border-radius: 0.3em;
     border-top-left-radius: $section-border-radius;
     border-top-right-radius: $section-border-radius;
 }
+
+:root {
+    background-color: var(--background-color);
+    --hsl-greyscale-color-25: hsl(0, 0%, 25%);
+    --hsl-greyscale-color-30: hsl(0, 0%, 30%);
+    --hsl-greyscale-color-35: hsl(0, 0%, 35%);
+    --hsl-greyscale-color-40: hsl(0, 0%, 40%);
+    --hsl-greyscale-color-45: hsl(0, 0%, 45%);
+    --hsl-greyscale-color-50: hsl(0, 0%, 50%);
+    --hsl-greyscale-color-55: hsl(0, 0%, 55%);
+    --hsl-greyscale-color-60: hsl(0, 0%, 60%);
+    --hsl-greyscale-color-65: hsl(0, 0%, 65%);
+    --hsl-greyscale-color-70: hsl(0, 0%, 70%);
+    --hsl-greyscale-color-75: hsl(0, 0%, 75%);
+    --hsl-greyscale-color-80: hsl(0, 0%, 80%);
+    --hsl-greyscale-color-85: hsl(0, 0%, 85%);
+    --hsl-greyscale-color-90: hsl(0, 0%, 90%);
+    --hsl-greyscale-color-95: hsl(0, 0%, 95%);
+
+
+    --reddit-color: #ff4500;
+    --dark-icon-button-highlight-color: hsla(0, 0%, 40%, 0.4);
+    --pale-white-color: #f7f9fa;
+    --accent-color: #0079d3;
+
+    --navbar-color: white;
+    --background-color: #dae0e6;
+    --section-border-color: var(--hsl-greyscale-color-80);
+    --navbar-icon-button-color: #333;
+    --navbar-icon-button-hover-color: hsla(0, 0%, 90%);
+    --navbar-search-bar-color: #f6f7f8;
+    --text-color: #333333;
+    --tertiary-text-color: var(--hsl-greyscale-color-60);
+    --body-text-color: #1c1c1c;
+    --inverse-body-text-color: var(--hsl-greyscale-color-90);
+    --post-image-background-color: white;
+    --vote-section-color: var(--pale-white-color);
+    --section-background-color: var(--navbar-color);
+    --text-input-background-color: var(--pale-white-color);
+    --text-input-hover-border-color: var(--accent-color);
+    --skeleton-background: var(--hsl-greyscale-color-90);
+    --input-placeholder-color: var(--hsl-greyscale-color-10);
+    --input-border-color: var(--hsl-greyscale-color-90);
+    --theme-color: white;
+}
+
+html[dark="true"] {
+    --navbar-color: hsla(0, 0%, 14%, 1);
+    --background-color: #121212;
+    --section-border-color: hsl(0, 0%, 30%);
+    --navbar-icon-button-color: var(--hsl-greyscale-color-80);
+    --navbar-icon-button-hover-color: hsla(0, 0%, 40%, 0.4);
+    --dark-section-background-color: #151516;
+    --navbar-search-bar-color: var(--hsl-greyscale-color-25);
+    --text-color: var(--hsl-greyscale-color-80);
+    --tertiary-text-color: var(--hsl-greyscale-color-50);
+    --post-image-background-color: #1A1A1B;
+    --vote-section-color: var(--navbar-color);
+    --body-text-color: var(--hsl-greyscale-color-90);
+    --inverse-body-text-color: #1c1c1c;
+    --section-background-color: var(--navbar-color);
+    --text-input-background-color: var(--pale-white-color);
+    --text-input-hover-border-color: var(--hsl-greyscale-color-90);
+    --skeleton-background: var(--hsl-greyscale-color-25);
+    --input-placeholder-color: var(--hsl-greyscale-color-90);
+    --input-border-color: var(--hsl-greyscale-color-30);
+    --theme-color: black;
+}
+
+
+::placeholder {
+    color: var(--input-placeholder-color);
+    font-weight: 400;
+}
+
+

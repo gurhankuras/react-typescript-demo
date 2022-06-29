@@ -13,10 +13,9 @@ html {
 }
 body {
     font-family: 'Roboto';
-    background-color: #121212;
+
     color: hsl(0, 0%, 80%);
     font-size: 0.7em;
-    overflow-x: hidden;
     scrollbar-color: var(--clr-scrollbar-foreground) var(--clr-scrollbar-background);   
 }
 

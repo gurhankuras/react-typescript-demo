@@ -7,7 +7,6 @@ export const fetch = (): ThunkAction<void, TrendingStore, unknown, TrendingActio
     async (dispatch, getState) => {
         // @ts-ignore
         const lastState = getState().trends as TrendingStore;
-        console.log(`loading: ${lastState.loading}, loaded: ${lastState.loaded}`)
         if (!lastState.loading && !lastState.loaded) {
             const items = [1, 2, 3, 4];
             dispatch(trendingsLoading())

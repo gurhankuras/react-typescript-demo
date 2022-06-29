@@ -1,3 +1,5 @@
+@use '../../../../shared.scss' as *;
+
 .navbar__logo {
     text-decoration: none;
     color: hsl(0, 0%, 80%);
@@ -31,4 +33,5 @@
 
 .logo-text {
     margin-left: 0.3em;
+    color: var(--body-text-color);
 }

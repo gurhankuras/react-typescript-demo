@@ -29,7 +29,7 @@
         .top-chart__image-text {
             font-size: 1em;
             font-weight: bold;
-            color: white;
+            color: var(--hsl-greyscale-color-90);
             position: absolute;
             bottom: 0;
             padding-left: 0.5em;
@@ -44,6 +44,7 @@
     
     .top-chart__list {
         list-style: none;
+        color: var(--body-text-color);
 
         .top-chart__item {
  

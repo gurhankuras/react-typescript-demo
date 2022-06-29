@@ -14,7 +14,7 @@ AppButton2Props>
 
 export const AppButton2: AppButton2Type = ({ onClick, title, style, variant, borderColor, backgroundColor }) => {
   const variant2 = variant || 'filled';
-  const backgroundColor2 = backgroundColor || 'hsl(0, 0%, 80%)';
+  const backgroundColor2 = backgroundColor || 'var(--accent-color)';
   const borderColor2 = borderColor || 'black';
 
   const styles: React.CSSProperties = {

@@ -7,17 +7,18 @@
     top: 0;
     width: 100%;
     position: fixed;
-    background-color: $navbar-color;
+    background-color: var(--navbar-color);
     display: flex;
     align-items: center;
     z-index: 1;
     padding: 0 1em;
-    box-shadow: 0 0 1px 1px hsl(0, 0%, 25%);
+    box-shadow: 0 0 1px 1px var(--theme-color);
     
     .home-dropdown-container {
         display: flex;
         flex-direction: row;
         align-items: center;
+        color: var(--body-text-color);
         flex: 1;
         gap: 0.4em;
         margin-left: 0.8em;
@@ -28,7 +29,11 @@
         user-select: none;
 
         &:hover {
-            border: $highlight-border;
+            border: 1px solid var(--section-border-color);
+        }
+
+        .navbar__home-text {
+            font-size: 0.85em;
         }
     }
 
@@ -49,9 +54,10 @@
         border-radius: 15%;
         cursor: pointer;
         font-size: 2em;
+        color: var(--navbar-icon-button-color);
 
         &:hover {
-            background-color: $icon-button-highlight-color;
+            background-color: var(--navbar-icon-button-hover-color);
         }
     }
 
@@ -60,11 +66,12 @@
     .navbar__action--circle {
         padding: 0.2em;
         border-radius: 50%;
+        color: var(--text-color);
         cursor: pointer;
         font-size: 2em;
 
         &.highlighted {
-            background-color: hsla(0, 0%, 40%, 0.4);
+            background-color: var(--navbar-icon-button-hover-color);
         }
 
         &:hover {
