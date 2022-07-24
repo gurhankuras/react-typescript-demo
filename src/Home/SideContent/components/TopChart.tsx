@@ -29,7 +29,7 @@ export default function TopChart() {
                 <li key={place} className='top-chart__item'>
                     <span className='item-place'>{place}.</span>
                     <TbChevronUp className='item-trend'/>
-                    <div className='item__avatar'/>
+                    <div className='chart__item__avatar'/>
                     <span className='item__name'>r/deadbydeadlightdeadbydeadlight</span>
                     <div style={{flex: '1'}} />
                     <AppButton2 variant='filled' style={{fontWeight: 'bold', backgroundColor:'#d7dadc', fontSize:'0.7em'}} title='Join'/>

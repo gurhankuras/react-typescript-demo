@@ -1,3 +1,6 @@
+
+@use '../../../../shared.scss' as *;
+
 .profile {
     display: flex;
     flex-direction: row;
@@ -16,4 +19,93 @@
         font-size: 0.8em;
         color: hsl(0, 0%, 50%);
     }
+
 }
+
+.profile-dropdown-menu {
+    position: absolute;
+    height: 40em;
+    width: 15em;
+    right: 0;
+    @include section-style;
+    box-shadow: 0 0 2px 1px hsla(0, 0%, 0.1, 0.1);
+
+    & > ul {
+        list-style: none;
+    }
+
+    & .profile-dropdown-menu__option {
+        color: var(--body-text-color);
+        font-size: 0.9rem;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.profile-subsection {
+    --profile-subsection-icon-size: 24px;
+    --profile-subsection-header-horizontal-padding: 1rem;
+    --profile-subsection-header-gap: .75rem;
+    padding: 1em;
+}
+
+.profile-subsection > ul {
+    padding-left: calc(var(--profile-subsection-icon-size) + var(--profile-subsection-header-horizontal-padding) + var(--profile-subsection-header-gap));
+}
+
+.profile-subsection-header {
+    padding: 0 var(--profile-subsection-header-horizontal-padding);
+    padding-bottom: 1em;
+    display: flex;
+    align-items: center;
+    gap: var(--profile-subsection-header-gap);
+    color: hsl(0, 0%, 40%);
+
+    .profile-subsection-icon {
+        width: var(--profile-subsection-icon-size);
+        height: var(--profile-subsection-icon-size);
+    }
+    .profile-subsection-title {
+        font-size: 0.8rem;
+        font-weight: bold;
+    }
+}
+
+.profile-dropdown-menu__option {
+    padding: .5em 0;
+    display: flex;
+    align-items: center;
+}
+
+.switch {
+    display: inline-block;
+    appearance: none;
+    background-color: var(--tertiary-text-color);
+    box-shadow: 1px 0px 0px 0px hsla(0, 0%, 50%, 0.2);
+    padding: 0.75em 1.25em;
+    border-radius: 10em;
+    position: relative;
+    transition: background-color 200ms ease-in-out;
+}
+
+.switch[data-checked="true"] {
+    background-color: var(--accent-color);
+}
+
+.switch[data-checked]::before {
+    content: "";
+    position: absolute;
+    left: 5%;
+    top: 5%;
+    bottom: 5%;
+    aspect-ratio: 1;
+    background-color: white;
+    box-shadow: -1px 1px 0px 0px hsla(0, 0%, 10%, 0.3);
+    border-radius: 100%;
+}
+
+.switch[data-checked="true"]::before {
+    right: 5%;
+    left: auto;
+}
+

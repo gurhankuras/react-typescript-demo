@@ -13,6 +13,8 @@ import { Provider } from 'react-redux';
 import { NavBar } from './Shared/components/NavBar/NavBar';
 import { AppRoutes } from './AppRoutes';
 import { store } from './Shared/components/NavBar/components/Search/combinedReducers';
+import { Snackbar } from './Shared/components/Snackbar/Snackbar';
+import { SnackbarContextProvider } from './Shared/components/Snackbar/SnackbarContextProvider';
 
 
 const root = ReactDOM.createRoot(
@@ -23,11 +25,15 @@ const root = ReactDOM.createRoot(
 root.render(
   //<React.StrictMode>
   <BrowserRouter>
+      <SnackbarContextProvider>
         <Provider store={store}>
-          <NavBar>
-            <AppRoutes />
-          </NavBar>
+            <NavBar>
+              <AppRoutes />
+              <Snackbar />
+            </NavBar>
         </ Provider>
+      </SnackbarContextProvider>
+       
 
   </BrowserRouter>  
   //</React.StrictMode>

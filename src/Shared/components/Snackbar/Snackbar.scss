@@ -1,0 +1,76 @@
+@use '../../../shared.scss' as *;
+
+.snackbar {
+    --snackbar-bottom: 1em;
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    bottom: var(--snackbar-bottom);
+    left: 50%;
+    transform: translateX(-50%) translateY(calc(100% + var(--snackbar-bottom))) scaleX(0);
+    width: 30em;
+    border-top-left-radius: 10%;
+    border-bottom-left-radius: 10%;
+    color: var(--body-text-color);
+    font-size: 0.8em;
+    background-color: var(--section-background-color);
+    opacity: 0.1;
+    transition: transform 400ms ease-in-out, opacity 400ms ease-in-out;
+
+    &:hover .snackbar__close-button {
+        opacity: 1;
+    }
+
+    &:hover .snackbar__band {
+        padding: 0 0.5em;
+    }
+}
+
+.snackbar__band {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--accent-color);
+    border-top-left-radius: 10%;
+    border-bottom-left-radius: 10%;
+    transition: padding 300ms ease-in-out;
+
+    .snackbar__close-button {
+        font-size: 1.4em;
+        color: white;
+        opacity: 0;
+        transition: opacity 300ms ease-in-out;
+    }
+    
+}
+
+
+.snackbar__content {
+    width: 100%;
+    border: 1px solid var(--section-border-color);
+    border-left: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em;
+}
+
+.snackbar__action {
+    cursor: pointer;
+    font-weight: bold;
+    background: transparent;
+    border: none;
+    padding: 0.5em 0.6em;
+    border-radius: 1em;
+    color: var(--accent-color);
+
+    &:hover {
+        background-color: var(--navbar-icon-button-hover-color);
+    }
+}
+
+.snackbar--visible {
+    transform: translateX(-50%) translateY(0) scaleX(1);
+    opacity: 1;
+}

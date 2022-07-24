@@ -1,18 +1,15 @@
 
+
 @use '../../../../../../shared.scss' as *;
 
-.dropdown {
-    position: relative;
-    width: max(100%, 200px);
-
-}
-
-.dropdown__content {
+.search-dropdown__content {
     display: none;
 }
 
-.dropdown__content[data-active='true'] {
+.search-dropdown__content[data-active='true'] {
     @include section-style;
+    position: relative;
+    width: max(100%, 200px);
     display: block;
     border-radius: 0;
     content: '';

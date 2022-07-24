@@ -1,37 +1,9 @@
 
 @use '../../../../../shared.scss' as *;
 
-
 $white-border-color: hsl(0, 0%, 90%);
 $white-border: 1px solid $white-border-color;
 
-.navbar__search-bar {
-    background-color: var(--navbar-search-bar-color);
-    width: 100%;
-    border: none;
-    outline: none;
-    padding-left: 0.5em;
-    color: var(--hsl-greyscale-color-40);
-}
-
-.navbar__search-bar-wrapper {
-    display: flex;
-    flex: 1;
-    border-radius: 0.5em;
-    align-items: center;
-    padding: 0.5em;
-    background-color: var(--navbar-search-bar-color);
-    border: $highlight-border;
-
-    &:hover {
-        border: $white-border;
-        background-color: var(--navbar-color);   
-    }
-
-    &:hover .navbar__search-bar{
-        background-color: var(--navbar-search-bar-color);   
-    }
-}
 
 .focused-wrapper {
     background-color: var(--navbar-color); 

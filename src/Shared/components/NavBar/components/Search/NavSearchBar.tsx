@@ -5,13 +5,15 @@ import classNames from 'classnames';
 import { TrendingToday } from './components/TrendingTodayList';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetch } from './state/TrendingActionCreators';
-import { SearchBarDropdown } from './components/SearchBarDropdown';
+//import { SearchBarDropdown } from './components/SearchBarDropdown';
 import { Provider } from 'react-redux'
 import { search } from './search-state/SearchActionCreators';
 import { useDebounce } from '../../../../utils/useDebounce';
 import { SearchResultList } from './components/SearchResultList';
 import { mapToPresented } from './search-state/services/makeSearchService';
 import { AppStore, store } from './combinedReducers';
+import { Dropdown, DropdownMenu } from './components/Dropdown';
+import { SearchBarDropdown } from './components/SearchBarDropdown';
 
 // MARK: Types
 type NavBarSearchBarProps = {
@@ -26,11 +28,11 @@ const DEBOUNCE_MILLISECONS = 500;
 export const NavSearchBar: NavSearchBarType = ({ style, placeholder, onClick }) => {
     // MARK: Refs
     const searchFieldRef = useRef<HTMLInputElement | null>(null);
-    const parentRef = useRef<HTMLDivElement | null>(null);
+    const [open, setOpen] = useState(false); 
+    console.log('dropdown state: ' + open);
 
     // MARK: Local state
     const [focused, setFocused] = useState(false);
-    const [dropdownOpen, setDropdownOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState<string>('');
     const debouncedSearchTerm = useDebounce(searchTerm, DEBOUNCE_MILLISECONS);
 
@@ -50,19 +52,23 @@ export const NavSearchBar: NavSearchBarType = ({ style, placeholder, onClick }) 
 
     //  MARK: Dropdown
     const closeDropdown = () => {
-        setDropdownOpen(false);
+        setOpen(false);
+        console.log('closeDropdown');
     }
 
     const openDropdown = () => {
+       setOpen(true);
         if (debouncedSearchTerm.length === 0) {
             // @ts-ignore
             dispatch(fetch())
         }
-        setDropdownOpen(true);
+        console.log('openDropdown');
     }
 
     // MARK: Input focus
-    const onFocused = (e: React.FocusEvent<HTMLInputElement, Element>) => setFocused(true)
+    const _onFocused = (e: React.FocusEvent<HTMLInputElement, Element>) => {
+        setFocused(true)
+    }
     const onBlurred = (e: React.FocusEvent<HTMLInputElement, Element>) => setFocused(false)
     
     const onClickHandler = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -83,8 +89,9 @@ export const NavSearchBar: NavSearchBarType = ({ style, placeholder, onClick }) 
     }
 
     return (
-        <div ref={parentRef}>
+        <Dropdown open={open}>
             <div 
+                data-input-dropdown-button
                 style={style} 
                 className={
                         classNames({
@@ -98,11 +105,11 @@ export const NavSearchBar: NavSearchBarType = ({ style, placeholder, onClick }) 
                     type="text" 
                     name="search"
                     onChange={(e) => {
-                       setSearchTerm(e.target.value)
+                    setSearchTerm(e.target.value)
                     }}
                     autoComplete='off'
                     placeholder={placeholder}
-                    onFocus={onFocused}
+                    onFocus={_onFocused}
                     onBlur={onBlurred}
                     className={classNames({
                         'navbar__search-bar': true,
@@ -111,14 +118,15 @@ export const NavSearchBar: NavSearchBarType = ({ style, placeholder, onClick }) 
                     ref={searchFieldRef} 
                 />
             </div>
-            <SearchBarDropdown 
-                open={dropdownOpen}
-                onClose={() => closeDropdown()}
-                ref={parentRef}
-            >
-               {renderDropdownContent()}
-            </SearchBarDropdown>
-        </div>
+            <DropdownMenu>
+                <SearchBarDropdown 
+                    open={open}
+                >
+                    {renderDropdownContent()}
+                </SearchBarDropdown>
+            </DropdownMenu>
+        </Dropdown>
+    
     )
 }
 
